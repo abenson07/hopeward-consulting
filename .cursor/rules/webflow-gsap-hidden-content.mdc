@@ -1,0 +1,49 @@
+---
+description: Fix invisible Webflow/GSAP content (opacity 0 + blur) on static and composite Hopeward pages
+alwaysApply: true
+---
+
+# Webflow “hidden until animate” content (GSAP / IX2)
+
+## What you see
+
+Copy, images, or whole blocks look **empty** in the browser. DevTools shows:
+
+```html
+style="filter:blur(12px);opacity:0"
+```
+
+on the element (often with a `data-w-id="…"` attribute). The node is in the DOM and has text, but it is invisible.
+
+## Why it happens
+
+1. **Webflow export** bakes the **first frame** of a load/scroll interaction into **inline styles** (`opacity: 0` + `filter: blur(12px)`).
+2. **`js/evermind-template.js`** (Webflow IX2 + GSAP) is supposed to animate those elements to visible on page load.
+3. That script only runs interactions registered for the current page’s **`data-wf-page`** on `<html>` (and matching `data-wf-site`).
+4. On **Hopeward composite pages** (e.g. `hopeward/about.html`), sections are pasted from `about/about-a.html`, `contact/contact-a.html`, etc., but the page often keeps **`data-wf-page` from `hopeward/home.html` (Home B)**. Interactions for `headline-about-a` (`ec9bf0ce-…`) belong to **About A’s page id** (`689de04d4b8833d6cb98766c`), so they **never fire** and content stays hidden.
+5. **Duplicate `data-w-id`** on the same document (e.g. the same section id on both `hero-about-a-section` and `hero-contact-a`) can also break IX2 for those elements.
+
+This is **not** a CSS layout bug; it is **stuck interaction initial state**.
+
+## Fix (preferred for Hopeward static pages)
+
+When content is invisible and has `filter:blur(12px);opacity:0` (or similar):
+
+1. **Remove the inline `style="filter:blur(12px);opacity:0"`** from the affected element(s).  
+   - Reference: `hopeward/how-we-work.html` — `headline-about-a` has **no** inline hide style and displays correctly.
+2. On the same page, scan for other `filter:blur(12px);opacity:0` nodes (contact heroes, service heroes, etc.) and remove those too if the user reports missing content.
+3. **Do not** fan out to every file in the repo unless the user asks; fix the **page they are viewing** or the file they named.
+
+## Alternatives (use sparingly)
+
+- Set `<html data-wf-page="…">` to the **source page’s** id when the Hopeward file is essentially one Webflow page — only helps if the whole document shares one interaction map.
+- Page-level CSS override (`opacity: 1 !important; filter: none !important`) on a class — works but hides the intent; prefer removing inline styles.
+
+## When copying from the section catalog
+
+If pasted markup includes `style="filter:blur(12px);opacity:0"`, **strip it** for Hopeward composite pages unless you also set the correct `data-wf-page` and accept IX2 maintenance.
+
+## Do not
+
+- Assume GSAP failed to load without checking inline `opacity: 0` first.
+- Re-add hide styles from `sections/index.html` or root templates without removing them on static Hopeward targets.

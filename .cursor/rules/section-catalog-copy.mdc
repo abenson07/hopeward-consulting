@@ -1,0 +1,22 @@
+---
+description: When the user cites a section catalog id from sections/index.html, copy that block verbatim
+alwaysApply: true
+---
+
+# Section catalog ID → HTML copy
+
+The section catalog lives at **`sections/index.html`**. Each top-level `<section>` from a source page has a stable **`id`** on its wrapper `<article class="section-catalog">`, e.g. `about-about-a-html__hero-about-a-section__0`.
+
+When the user **names one of those ids** (or pastes it) and asks to put that section on a page:
+
+1. **Meaning**  
+   They want the **exact HTML** of that catalog entry: the full `<section>...</section>` shown under that article in `sections/index.html`, or the equivalent first outer `<section>` in the **source file** named in the catalog header (e.g. `about/about-a.html` — `hero-about-a-section`).
+
+2. **Execution**  
+   - **Copy verbatim** — no rewriting copy, no design “improvements,” no dropping nested blocks unless they say so.  
+   - **Paths** — only change `href` / `src` / `srcset` when the **destination file’s directory depth** differs from the source (e.g. root vs `hopeward/`).  
+   - **Placement** — use **exactly** where they specify (e.g. “before the footer” = immediately above `<section class="master-footer">` or the site’s footer include).  
+   - **Do not** fan out to other pages unless they ask (see `single-target-edits.mdc`).
+
+3. **Optional**  
+   If they only give the **id**, look up the matching block in `sections/index.html` or open the source page from the id prefix and copy the matching section.

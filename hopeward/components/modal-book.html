@@ -1,0 +1,64 @@
+<!-- Hopeward book consultation modal — include once per page (see js/hopeward-book-modal.js) -->
+<div class="modal-book" id="hopeward-book-modal" aria-hidden="true">
+  <div class="modal-inner">
+    <div class="modal-form">
+      <div class="left-modal">
+        <div class="image-wrap-modal"><img src="../images/Modal.webp" loading="lazy" sizes="(max-width: 2400px) 100vw, 2400px" srcset="../images/5aaf33b87d48452a2044d79ef265ab80a8844499-p-500.webp 500w, ../images/5aaf33b87d48452a2044d79ef265ab80a8844499-p-800.webp 800w, ../images/5aaf33b87d48452a2044d79ef265ab80a8844499-p-1080.webp 1080w, ../images/5aaf33b87d48452a2044d79ef265ab80a8844499-p-1600.webp 1600w, ../images/5aaf33b87d48452a2044d79ef265ab80a8844499-p-2000.webp 2000w, ../images/Modal.webp 2400w" alt="" class="image-cover"></div>
+        <div class="contact-testimonial book">
+          <div class="eyebrow light">
+            <div class="eyebrow-circle"></div>
+            <div class="label-small">Your agent</div>
+          </div>
+          <div class="testimonial-author">
+            <div class="text-wrap-author">
+              <div><strong>Jessica Mercedes</strong></div>
+              <div>Head of Support</div>
+            </div>
+            <div class="author-avatar"><img src="../images/Author_1.webp" loading="lazy" sizes="(max-width: 967px) 100vw, 967px" srcset="../images/Author_1Author.webp 500w, ../images/Author_1Author.webp 800w, ../images/Author_1.webp 967w" alt="" class="image-cover"></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-block modal-form-block w-form">
+        <form id="hopeward-book-form" name="hopeward-book-form" data-name="Hopeward Book Form" method="get" class="form-contact">
+          <div class="book-form-top-tile">
+            <div class="text-h6">Book a free consultation</div>
+            <button type="button" class="book-close-button" aria-label="Close booking form">
+              <div class="icon-book-close w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 16 16" fill="none">
+                  <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg></div>
+            </button>
+          </div>
+          <div class="contact-form-inner">
+            <div class="input-wrap-contact">
+              <div class="label-large">Organization name</div><input class="text-field light w-input" maxlength="256" name="organization" data-name="Organization" placeholder="Your organization name" type="text" id="hopeward-book-organization" required="">
+            </div>
+            <div class="w-layout-grid input-halves">
+              <div class="input-wrap-contact">
+                <div class="label-large">Your name</div><input class="text-field light w-input" maxlength="256" name="name" data-name="Name" placeholder="Your name here" type="text" id="hopeward-book-name" required="">
+              </div>
+              <div class="input-wrap-contact">
+                <div class="label-large">Email</div><input class="text-field light w-input" maxlength="256" name="Email-address" data-name="Email address" placeholder="Email address" type="email" id="hopeward-book-email" required="">
+              </div>
+            </div>
+            <div class="input-wrap-contact">
+              <div class="label-large">Optional note</div><textarea placeholder="Describe your project vision" maxlength="5000" id="hopeward-book-note" name="Optional-note" data-name="Optional note" class="text-field light textarea-book w-input"></textarea>
+            </div><label class="w-checkbox checkbox">
+              <div class="w-checkbox-input w-checkbox-input--inputType-custom checkbox-contact"></div><input type="checkbox" id="hopeward-book-consent" name="Checkbox" data-name="Checkbox" required="" style="opacity:0;position:absolute;z-index:-1"><span class="checkbox-text w-form-label" for="hopeward-book-consent">I allow Hopeward to store my details for communication.</span>
+            </label>
+          </div>
+          <div class="contact-form-bottom-tile">
+            <div class="contact-form-bottom-left">
+              <div class="text-small">We'll confirm your time via email within 24 <br>hours. Calls are free and non-binding.</div>
+            </div><input type="submit" data-wait="Please wait..." class="cta-main submit w-button" value="Book now">
+          </div>
+        </form>
+        <div class="success-message w-form-done">
+          <div>Thank you! Your submission has been received!</div>
+        </div>
+        <div class="error-message w-form-fail">
+          <div>Oops! Something went wrong while submitting the form.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

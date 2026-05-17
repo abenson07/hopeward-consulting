@@ -1,0 +1,12 @@
+---
+description: Shorthand “audience cards” for the templates expandable grid
+alwaysApply: true
+---
+
+# Audience cards (terminology)
+
+When the user says **audience cards** (sometimes mistyped “audeince”), they mean the **two expandable promo cards** in **`section#templates`**: the `div.w-layout-grid.expandable-halves` block (e.g. Green Cities / **Organizations** and Sustainability / **Collaboratives**, with hover labels like “How we work with organizations / collaboratives”).
+
+On **`hopeward/home.html`**, this is the grid directly under the templates headline inside **`#templates`**.
+
+If they ask to reuse or edit “audience cards” on another page, copy or adjust **that grid markup and its asset paths**, not unrelated cards.
