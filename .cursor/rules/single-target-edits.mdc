@@ -11,10 +11,19 @@ When the user asks you to **modify**, **change**, **update**, **fix**, or **add*
    Apply the change only to what they’re clearly referring to: the file they named, the URL/path they gave, the DOM or browser selection they pasted, or the file that is the clear focus of the message.
 
 2. **Do not fan out**  
-   Do **not** automatically repeat the same edit across other pages or variants (e.g. `index.html`, `hopeward/home.html`, `homepage/home-c.html`, mirrors in `sections/`) unless they **explicitly** ask to update multiple places, “all homepages,” “every page with X,” or similar.
+   Do **not** automatically repeat the same edit across other pages or variants (e.g. `index.html`, `homepage/home-c.html`, mirrors in `sections/`) unless they **explicitly** ask to update multiple places, “all homepages,” “every page with X,” or similar.
 
 3. **If ambiguous**  
    Ask one short question: which single page/file should change—or confirm they want it synced everywhere.
 
 4. **Explicit multi-scope**  
    Only propagate the same change broadly when instructions use clear multi-file language (“all templates,” “both pages,” “every HTML file with this section,” etc.).
+
+5. **Page they’re on = only that page**  
+   If they name a page, paste a browser selection, or you can tell which file they’re previewing (e.g. `about.html`), change **only that file** unless they say otherwise.
+
+6. **No global CSS by default**  
+   Do **not** edit shared stylesheets (`css/evermind-template.css`, `css/hopeward.css`, etc.) or duplicate the same rule across many HTML files to “fix it everywhere.” Prefer a **scoped** fix on that page (e.g. a `<style>` block in that HTML file, or a selector tied to that page’s section).
+
+7. **Ask before going broader**  
+   If the right fix might need another file, shared CSS, or a pattern repeated site-wide, **stop and ask** in one short message. Default to **under-scoping**; let the user correct you rather than fanning out.

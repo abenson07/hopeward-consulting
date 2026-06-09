@@ -20,7 +20,7 @@ on the element (often with a `data-w-id="…"` attribute). The node is in the DO
 1. **Webflow export** bakes the **first frame** of a load/scroll interaction into **inline styles** (`opacity: 0` + `filter: blur(12px)`).
 2. **`js/evermind-template.js`** (Webflow IX2 + GSAP) is supposed to animate those elements to visible on page load.
 3. That script only runs interactions registered for the current page’s **`data-wf-page`** on `<html>` (and matching `data-wf-site`).
-4. On **Hopeward composite pages** (e.g. `hopeward/about.html`), sections are pasted from `about/about-a.html`, `contact/contact-a.html`, etc., but the page often keeps **`data-wf-page` from `hopeward/home.html` (Home B)**. Interactions for `headline-about-a` (`ec9bf0ce-…`) belong to **About A’s page id** (`689de04d4b8833d6cb98766c`), so they **never fire** and content stays hidden.
+4. On **Hopeward composite pages** (e.g. `about.html`), sections are pasted from `evermind-template/about/about-a.html`, `evermind-template/contact/contact-a.html`, etc., but the page often keeps **`data-wf-page` from `index.html` (Home B)**. Interactions for `headline-about-a` (`ec9bf0ce-…`) belong to **About A’s page id** (`689de04d4b8833d6cb98766c`), so they **never fire** and content stays hidden.
 5. **Duplicate `data-w-id`** on the same document (e.g. the same section id on both `hero-about-a-section` and `hero-contact-a`) can also break IX2 for those elements.
 
 This is **not** a CSS layout bug; it is **stuck interaction initial state**.
@@ -30,7 +30,7 @@ This is **not** a CSS layout bug; it is **stuck interaction initial state**.
 When content is invisible and has `filter:blur(12px);opacity:0` (or similar):
 
 1. **Remove the inline `style="filter:blur(12px);opacity:0"`** from the affected element(s).  
-   - Reference: `hopeward/how-we-work.html` — `headline-about-a` has **no** inline hide style and displays correctly.
+   - Reference: `how-we-work.html` — `headline-about-a` has **no** inline hide style and displays correctly.
 2. On the same page, scan for other `filter:blur(12px);opacity:0` nodes (contact heroes, service heroes, etc.) and remove those too if the user reports missing content.
 3. **Do not** fan out to every file in the repo unless the user asks; fix the **page they are viewing** or the file they named.
 

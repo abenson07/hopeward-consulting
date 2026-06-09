@@ -10,8 +10,8 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-COMPONENT_PATH = ROOT / "components" / "home-a-tab-section.html"
+ROOT = Path(__file__).resolve().parent.parent.parent
+COMPONENT_PATH = Path(__file__).resolve().parent / "components" / "home-a-tab-section.html"
 SECTION_RE = re.compile(
     r"<section class=\"section home-a-tab-section\">.*?</section>\s*"
     r"(?=<section class=\"master-footer\">)",

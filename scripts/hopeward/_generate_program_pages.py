@@ -5,14 +5,14 @@ WARNING: Running this overwrites the five program pages. As of 2026, detailed
 copy for each program is maintained in those HTML files (and may diverge from
 PROGRAMS below). Update PROGRAMS or merge from HTML before regenerating.
 
-Run from repo root: python3 hopeward/_generate_program_pages.py
+Run from repo root: python3 scripts/hopeward/_generate_program_pages.py
 """
 from __future__ import annotations
 
 import html
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 TEMPLATE = (ROOT / "service-template.html").read_text(encoding="utf-8")
 
 SERVICE_ORDER: list[tuple[str, str]] = [

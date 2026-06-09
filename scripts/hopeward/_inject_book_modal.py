@@ -8,11 +8,11 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-MODAL = (ROOT / "components" / "modal-book.html").read_text(encoding="utf-8").strip()
+ROOT = Path(__file__).resolve().parent.parent.parent
+MODAL = (Path(__file__).resolve().parent / "components" / "modal-book.html").read_text(encoding="utf-8").strip()
 MODAL_MARKER = 'id="hopeward-book-modal"'
-SCRIPT_TAG = '  <script src="../js/hopeward-book-modal.js" type="text/javascript"></script>'
-SCRIPT_MARKER = 'src="../js/hopeward-book-modal.js"'
+SCRIPT_TAG = '  <script src="js/hopeward-book-modal.js" type="text/javascript"></script>'
+SCRIPT_MARKER = 'src="js/hopeward-book-modal.js"'
 INSERT_BEFORE = '  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery'
 
 
@@ -32,7 +32,7 @@ def inject_modal(html: str) -> str:
 def inject_script(html: str) -> str:
     if SCRIPT_MARKER in html:
         return html
-    anchor = '  <script src="../js/evermind-template.js" type="text/javascript"></script>'
+    anchor = '  <script src="js/evermind-template.js" type="text/javascript"></script>'
     if anchor not in html:
         raise ValueError("evermind-template.js script not found")
     return html.replace(anchor, anchor + "\n" + SCRIPT_TAG, 1)

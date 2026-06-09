@@ -5,9 +5,9 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-HOME = ROOT / "hopeward" / "home.html"
-INSIGHTS = ROOT / "hopeward" / "insights"
+ROOT = Path(__file__).resolve().parent.parent.parent
+HOME = ROOT / "index.html"
+INSIGHTS = ROOT / "insights"
 
 
 def extract_master_navigation(html: str) -> str:
@@ -18,16 +18,37 @@ def extract_master_navigation(html: str) -> str:
     return html[start:end]
 
 
-def deepen_paths(text: str) -> str:
+def deepen_paths_for_insights(text: str) -> str:
+    """Root nav uses css/, images/ — insights need ../ prefix on relative paths."""
     text = text.replace('aria-current="page" ', "")
     text = text.replace(" w--current", "")
 
+    def fix_srcset(val: str) -> str:
+        parts: list[str] = []
+        for chunk in val.split(", "):
+            chunk = chunk.strip()
+            if not chunk:
+                continue
+            tokens = chunk.rsplit(" ", 1)
+            if len(tokens) == 2 and tokens[1].endswith("w"):
+                url, descriptor = tokens[0].strip(), tokens[1]
+                if not url.startswith(("http://", "https://", "mailto:", "#", "/", "../")):
+                    url = "../" + url
+                parts.append(f"{url} {descriptor}")
+            elif not chunk.startswith(("http://", "https://", "mailto:", "#", "/", "../")):
+                parts.append("../" + chunk)
+            else:
+                parts.append(chunk)
+        return ", ".join(parts)
+
     def attr_fix(match: re.Match[str]) -> str:
         attr, val = match.group(1), match.group(2)
-        if val.startswith(("http://", "https://", "mailto:", "#", "../../")):
+        if val.startswith(("http://", "https://", "mailto:", "#", "/")):
             return match.group(0)
+        if attr == "srcset":
+            return f'srcset="{fix_srcset(val)}"'
         if val.startswith("../"):
-            return f'{attr}="../../{val[3:]}"'
+            return match.group(0)
         return f'{attr}="../{val}"'
 
     return re.sub(r'(href|src|srcset)="([^"]*)"', attr_fix, text)
@@ -42,20 +63,16 @@ def replace_navigation(page_html: str, nav_html: str) -> str:
 
 
 def ensure_hopeward_css(page_html: str) -> str:
-    link = '<link href="../../css/hopeward.css" rel="stylesheet" type="text/css">'
+    link = '<link href="../css/hopeward.css" rel="stylesheet" type="text/css">'
     if link in page_html:
         return page_html
-    needle = '<link href="../../css/evermind-template.css" rel="stylesheet" type="text/css">'
-    return page_html.replace(
-        needle,
-        needle + "\n  " + link,
-        1,
-    )
+    needle = '<link href="../css/evermind-template.css" rel="stylesheet" type="text/css">'
+    return page_html.replace(needle, needle + "\n  " + link, 1)
 
 
 def main() -> None:
     home_html = HOME.read_text(encoding="utf-8")
-    nav = deepen_paths(extract_master_navigation(home_html))
+    nav = deepen_paths_for_insights(extract_master_navigation(home_html))
 
     for path in sorted(INSIGHTS.glob("*.html")):
         updated = ensure_hopeward_css(replace_navigation(path.read_text(encoding="utf-8"), nav))

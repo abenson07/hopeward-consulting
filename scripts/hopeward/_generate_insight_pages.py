@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Populate hopeward/insights/*.html from Webflow blog CSV export."""
+"""Populate insights/*.html from Webflow blog CSV export."""
 from __future__ import annotations
 
 import csv
@@ -9,8 +9,8 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-INSIGHTS = ROOT / "hopeward" / "insights"
+ROOT = Path(__file__).resolve().parent.parent.parent
+INSIGHTS = ROOT / "insights"
 TEMPLATE_PATH = INSIGHTS / "detail-blog.html"
 DEFAULT_CSV = Path(
     "/Users/alexbenson/Downloads/Hopeward 2024 - Blog Posts - 670c32f84458519e4d4a1a53.csv"
@@ -227,10 +227,10 @@ def main() -> None:
         (INSIGHTS / f"{slug}.html").write_text(render_post(template, row, by_slug), encoding="utf-8")
         print(f"Wrote {slug}.html")
     print(f"Done — {len(rows)} insight pages.")
-    print("Applying Hopeward nav from home.html …")
+    print("Applying Hopeward nav from index.html …")
     import runpy
 
-    runpy.run_path(str(ROOT / "hopeward" / "_patch_insights_nav.py"), run_name="__main__")
+    runpy.run_path(str(ROOT / "scripts" / "hopeward" / "_patch_insights_nav.py"), run_name="__main__")
 
 
 if __name__ == "__main__":

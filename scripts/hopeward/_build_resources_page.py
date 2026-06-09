@@ -10,10 +10,11 @@ import html
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-CSV_PATH = ROOT / "data" / "resources.csv"
+ROOT = Path(__file__).resolve().parent.parent.parent
+SCRIPT_DIR = Path(__file__).resolve().parent
+CSV_PATH = SCRIPT_DIR / "data" / "resources.csv"
 RESOURCES_HTML = ROOT / "resources.html"
-FALLBACK_IMAGE = "../images/CS-Thumbnail_1.webp"
+FALLBACK_IMAGE = "images/CS-Thumbnail_1.webp"
 D = "motion.div".replace("motion.", "")  # "div"
 
 TYPE_FILTER = {
