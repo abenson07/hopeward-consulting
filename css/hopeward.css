@@ -64,3 +64,8 @@ body.hopeward-book-modal-open {
     grid-template-columns: 1fr;
   }
 }
+
+/* Footer legal row — no top divider */
+.footer-legal-tile {
+  border-top: none;
+}
