@@ -102,10 +102,57 @@
     }
   }
 
+  // TEMP: nav mega-menus use data-hover="true" — keep hover open/close, block click toggle
+  // (w--open, aria-expanded, opacity intro/outro) on the label only.
+  function blockHoverDropdownClickToggle() {
+    function isHoverNavToggleTarget(target) {
+      if (!target || !target.closest) {
+        return false;
+      }
+      var toggle = target.closest(".w-dropdown-toggle");
+      if (!toggle || !toggle.contains(target)) {
+        return false;
+      }
+      var dropdown = toggle.closest(".w-dropdown[data-hover='true']");
+      return !!(dropdown && dropdown.closest(".master-navigation"));
+    }
+
+    function guardToggleActivation(event) {
+      if (!isHoverNavToggleTarget(event.target)) {
+        return;
+      }
+      event.stopPropagation();
+      event.preventDefault();
+    }
+
+    document.addEventListener("mouseup", guardToggleActivation, true);
+    document.addEventListener("click", guardToggleActivation, true);
+    document.addEventListener(
+      "keydown",
+      function (event) {
+        if (event.key !== "Enter" && event.key !== " ") {
+          return;
+        }
+        guardToggleActivation(event);
+      },
+      true
+    );
+
+    // Backup: Webflow binds after DOMContentLoaded; strip toggle handlers once it has run.
+    if (typeof jQuery !== "undefined") {
+      window.setTimeout(function () {
+        jQuery(".master-navigation .w-dropdown[data-hover='true']").each(function () {
+          jQuery(this).children(".w-dropdown-toggle").off("mouseup.w-dropdown click.w-dropdown");
+        });
+      }, 0);
+    }
+  }
+
   function init() {
     bindModal();
     document.addEventListener("click", onDocumentClick);
     document.addEventListener("keydown", onKeydown);
+    blockHoverDropdownClickToggle();
   }
 
   if (document.readyState === "loading") {
