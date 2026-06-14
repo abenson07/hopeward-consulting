@@ -34,6 +34,27 @@
   max-width: 100%;
   width: 100%;
 }
+.hero-home-b-section .hero-link-new {
+  padding: 8px 12px;
+}
+#templates .expandable-title-stack {
+  display: flex;
+  flex-flow: column;
+  gap: 4px;
+}
+.home-a-logo-section .wrap-marquee-logos {
+  column-gap: 0;
+  grid-column-gap: 0;
+  animation: hopeward-logo-marquee 20s linear infinite;
+  will-change: transform;
+}
+.home-a-logo-section .single-logo-marquee {
+  padding-right: var(--spacing--80);
+}
+@keyframes hopeward-logo-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
 </style>
 </head>
 <body>
@@ -500,28 +521,25 @@
   <section data-section-name="hero-actionable-pathways-forward" data-w-id="b89e9a4a-6634-7123-4272-18b20464667a" class="section hero-home-b-section">
     <div class="w-layout-blockcontainer main-container w-container">
       <div class="headline-home-b">
-        <a href="about/about-a.html" data-w-id="5b12c093-35df-cc58-71e6-a3aa7bdff421" class="hero-link-new w-inline-block"><img src="images/Icon.svg" loading="lazy" alt="" class="icon-label">
-          <div class="text-small">A collaborative consultancy</div>
-          <div class="link-arrow-icon w-embed"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 12L10 8L6 4" stroke="#181E25" stroke-opacity="0.48" stroke-width="2" stroke-linecap="square"></path>
-            </svg></div>
-        </a>
+        <div data-w-id="5b12c093-35df-cc58-71e6-a3aa7bdff421" class="hero-link-new w-inline-block">
+          <div class="text-small">A Collaborative Consultancy</div>
+        </div>
         <h1 heading-load="" data-w-id="ef3cc514-9e68-7857-dff1-b6142808a94d">When the work feels tangled, we help you build <span class="headline-home-b-accent">actionable pathways forward</span>.</h1>
         <div data-w-id="f91dc9ad-c79a-15a2-b496-460334a21d3b" class="headline-home-b-bottom-tile">
           <div class="text-wrap-home-b-hero">
-            <div>You don't need another consultant who hands you a polished report and walks away. You need a thoughtful partner who understands the weight of leading mission-driven work and the systems that shape it.</div>
-            <div>Hopeward works alongside nonprofit and backbone leaders, as well as cross-sector collaboratives to ground decisions in strategy, strengthen progress through collaboration, and drive meaningful momentum with hope.</div>
+            <div>You need a thoughtful partner who understands the weight of leading mission-driven work and the systems that shape it.</div>
+            <div>Hopeward works alongside nonprofit and collaborative network leaders to ground decisions in strategy, strengthen progress through collaboration, and build the structures that turn good ideas into sustained action.</div>
           </div>
           <div class="button-wrap-home-b">
             <a href="#" data-hopeward-book-modal button="" data-wf--cta-main--variant="accent" class="cta-main w-inline-block">
               <div class="button-text-mask">
-                <div button-text="" class="button-text">Submit RFP</div>
+                <div button-text="" class="button-text">Find your path forward</div>
               </div>
               <div button-bg="" class="button-bg"></div>
             </a>
             <a button="" data-w-id="aa13f4c8-4890-7c03-ee9f-5f9e80d0ff5c" href="#" class="cta-book w-inline-block">
               <div class="left-cta-book">
-                <div class="image-wrap-cta-book"><img sizes="(max-width: 767px) 100vw, (max-width: 991px) 727.9921875px, 939.9921875px" srcset="images/Author_1Author.webp 500w, images/Author_1Author.webp 800w, images/Author_1.webp 967w" alt="" src="images/Author_1.webp" loading="lazy" class="image-cover"></div>
+                <div class="image-wrap-cta-book"><img sizes="(max-width: 767px) 100vw, (max-width: 991px) 727.9921875px, 939.9921875px" srcset="images/Team-Member-Image_1Team-Member-Image.webp 500w, images/Team-Member-Image_1.webp 664w" alt="Danielle Brower" src="images/Team-Member-Image_1.webp" loading="lazy" class="image-cover"></div>
                 <div class="circle-cta-book"></div>
               </div>
               <div class="button-text-mask">
@@ -648,60 +666,25 @@
       <div class="shadow-marquee right"></div>
     </div>
   </section>
-  <section data-section-name="working-with-us-move-hopeward" data-wf--faq-section--variant="padding-large" class="section faq-section w-variant-2fab677f-f486-bf63-67f9-3d2ae5e683fa">
+  <section class="section home-b-about-section">
     <div class="w-layout-blockcontainer main-container w-container">
-      <div class="w-layout-grid faq-halves">
-        <div class="headline-faq">
-          <div class="divider-dark-16"></div>
-          <div class="eyebrow">
-            <div class="eyebrow-circle"></div>
-            <div class="label-small">Working with us</div>
-          </div>
-          <h3 class="no-margins">What it feels like to <span class="headline-home-b-accent">move Hopeward</span>.</h3>
-          <div>Hopeward isn't just a name, it's a direction. It takes shape in grounded strategy, aligned leadership, and systems that transform complexity into clarity and conversation into coordinated, sustained action.</div>
-          <a href="contact.html" button="" target="_blank" class="cta-main secondary-dark w-inline-block">
-            <div class="button-text-mask secondary-dark-2">
-              <div button-text="" class="button-text secondary-dark-3">More templates</div>
-            </div>
-            <div class="button-icon-wrap secondary-dark-4">
-              <div button-icon-right="" class="icon-button secondary-dark-6 prev secondary-dark-5 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 16 16" fill="none">
-                  <path d="M3.33594 7.9987L12.0026 7.9987M8.0026 3.33203L12.6693 7.9987L8.0026 12.6654" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg></div>
-              <div button-icon-right="" class="icon-button secondary-dark-6 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 16 16" fill="none">
-                  <path d="M3.33594 7.9987L12.0026 7.9987M8.0026 3.33203L12.6693 7.9987L8.0026 12.6654" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg></div>
-            </div>
-            <div button-bg="" class="button-bg secondary-dark-7"></div>
-          </a>
+      <div class="headline-home-b-about">
+        <div data-wf--eyebrow--variant="base" class="eyebrow">
+          <div class="eyebrow-circle"></div>
+          <div class="label-small">What it feels like to move Hopeward</div>
         </div>
-        <div class="faq-block hopeward-feel-block">
-          <div class="hopeward-feel-list">
-            <div class="divider-dark-16"></div>
-            <div class="hopeward-feel-item">
-              <h4 class="text-h7 no-margins">Clarity in the room</h4>
-              <p class="text-body hopeward-feel-text">Priorities are defined. Decisions are grounded in strategy, not urgency.</p>
-            </div>
-            <div class="divider-dark-16"></div>
-            <div class="hopeward-feel-item">
-              <h4 class="text-h7 no-margins">Alignment</h4>
-              <p class="text-body hopeward-feel-text">Roles are clear. Governance structures support action instead of slowing it down.</p>
-            </div>
-            <div class="divider-dark-16"></div>
-            <div class="hopeward-feel-item">
-              <h4 class="text-h7 no-margins">Collaboration with structure and trust</h4>
-              <p class="text-body hopeward-feel-text">Partnerships function because expectations, accountability, and communication are intentional and meaningful.</p>
-            </div>
-            <div class="divider-dark-16"></div>
-            <div class="hopeward-feel-item">
-              <h4 class="text-h7 no-margins">Data that informs direction</h4>
-              <p class="text-body hopeward-feel-text">Metrics, stories, lived experience, and community knowledge are woven together to support learning, strengthen decisions, and adapt strategy over time.</p>
-            </div>
-            <div class="divider-dark-16"></div>
-            <div class="hopeward-feel-item">
-              <h4 class="text-h7 no-margins">Momentum you can see and feel</h4>
-              <p class="text-body hopeward-feel-text">The work moves with confidence, coordination, and sustained energy.</p>
-            </div>
-            <div class="divider-dark-16"></div>
+        <div class="heading-slider-home-a">
+          <div class="text-h5">Hope isn't optimism. It's a cognitive process with clear goals, particle pathways, and the sustained agency to keep moving forward.</div>
+        </div>
+      </div>
+      <div class="w-layout-grid home-b-about-images">
+        <div class="left-home-b-about">
+          <div data-w-id="33bf8f36-a801-9504-fabd-b952e6d90a98" class="home-b-about-image"><img src="images/home-b-about-left.jpg" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 727.9921875px, 939.9921875px" alt="" class="image-cover parallax"></div>
+        </div>
+        <div id="w-node-_0e74643d-89ff-26a6-18e4-31a1dc29b317-9f2277ec" class="right-home-b-about">
+          <div data-w-id="481242bd-fcf1-3679-1643-4acb41199c89" class="home-b-about-image small"><img src="images/home-b-about-right.jpg" loading="lazy" sizes="(max-width: 680px) 100vw, 680px" alt="" class="image-cover parallax"></div>
+          <div class="text-wrap-home-b-about">
+            <div>Most mission-driven leaders aren't lacking ideas of commitment, what gets in the way is complexity, competing priorities, and the slow erosion of energy that comes from working hard without always seeing traction. If you've sat in a room where the mission feels clear, but the path forward doesn't you already understand why hope matters in this work.</div>
           </div>
         </div>
       </div>
@@ -713,21 +696,23 @@
           <div class="headline-template-top-tile">
             <div data-wf--eyebrow--variant="base" class="eyebrow">
               <div class="eyebrow-circle"></div>
-              <div class="label-small">Webflow template</div>
+              <div class="label-small">Trusted by Mission-Driven Leaders</div>
             </div>
-            <h2 class="text-h4 no-margins">Our work is designed for leaders navigating complexity, growth, and change.</h2>
+            <h2 class="text-h4 no-margins">Whether you lead an organization or convene a network, we meet you where the work is the hardest and help you move it forward.</h2>
           </div>
         </div>
         <div class="w-layout-grid expandable-halves">
           <a href="service.html" class="card-expandable w-inline-block">
-            <div data-w-id="f1097177-83fe-2f77-0a0e-6c9510b323a4" class="image-wrap-expandable"><img src="images/About-B_2.webp" loading="lazy" sizes="(max-width: 680px) 100vw, 680px" srcset="images/About-B_2About-B.webp 500w, images/About-B_2.webp 680w" alt="" class="image-cover parallax"></div>
+            <div data-w-id="f1097177-83fe-2f77-0a0e-6c9510b323a4" class="image-wrap-expandable"><img src="images/organizations-card.jpg" loading="lazy" sizes="(max-width: 680px) 100vw, 680px" alt="" class="image-cover parallax"></div>
             <div class="expandable-top-tile">
               <div data-wf--eyebrow--variant="light" class="eyebrow w-variant-d0c116b2-ccca-6779-50e7-85c81eef344c">
                 <div class="eyebrow-circle"></div>
-                <div class="label-small">Green Cities</div>
+                <div class="label-small">Organizational Strategy</div>
               </div>
-              <div class="text-h6">Organizations</div>
-              <div class="text-small">and the people who power them</div>
+              <div class="expandable-title-stack">
+                <div class="text-h6">Organizations</div>
+                <div class="text-small">and the people who power them</div>
+              </div>
             </div>
             <div class="expandable-bottom-tile">
               <div class="expandable-cta">
@@ -742,14 +727,16 @@
             <div class="overlay-expandable"></div>
           </a>
           <a href="service.html" class="card-expandable w-inline-block">
-            <div data-w-id="4a9b2949-1d6c-857c-1289-b7af0a57752a" class="image-wrap-expandable"><img src="images/Modal.webp" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 727.984375px, 939.9921875px" srcset="images/5aaf33b87d48452a2044d79ef265ab80a8844499-p-500.webp 500w, images/5aaf33b87d48452a2044d79ef265ab80a8844499-p-800.webp 800w, images/5aaf33b87d48452a2044d79ef265ab80a8844499-p-1080.webp 1080w, images/5aaf33b87d48452a2044d79ef265ab80a8844499-p-1600.webp 1600w, images/5aaf33b87d48452a2044d79ef265ab80a8844499-p-2000.webp 2000w, images/Modal.webp 2400w" alt="" class="image-cover parallax"></div>
+            <div data-w-id="4a9b2949-1d6c-857c-1289-b7af0a57752a" class="image-wrap-expandable"><img src="images/collaboratives-card.jpg" loading="lazy" sizes="(max-width: 680px) 100vw, 680px" alt="" class="image-cover parallax"></div>
             <div class="expandable-top-tile">
               <div data-wf--eyebrow--variant="light" class="eyebrow w-variant-d0c116b2-ccca-6779-50e7-85c81eef344c">
                 <div class="eyebrow-circle"></div>
-                <div class="label-small">Sustainability</div>
+                <div class="label-small">Collective Impact</div>
               </div>
-              <div class="text-h6">Collaboratives</div>
-              <div class="text-small">the change makers within them</div>
+              <div class="expandable-title-stack">
+                <div class="text-h6">Collaboratives</div>
+                <div class="text-small">the change makers within them</div>
+              </div>
             </div>
             <div class="expandable-bottom-tile">
               <div class="expandable-cta">
@@ -777,10 +764,9 @@
           </div>
         </div>
         <div class="master-marquees logo-marquee">
-          <div data-w-id="accb3fbc-499e-d5fe-83f4-3cb1c432df34" class="wrap-marquee-logos">
-            <div class="single-logo-marquee"><img loading="lazy" src="new_images/partners/artskc.png" alt="" class="marquee-logo"><img loading="lazy" src="new_images/partners/cti.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/emm.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/hmg.svg" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/ku.png" alt="" class="marquee-logo small"><img loading="lazy" src="new_images/partners/lisc.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/mac.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/thedrop.png" alt="" class="marquee-logo large"></div>
-            <div class="single-logo-marquee"><img loading="lazy" src="new_images/partners/artskc.png" alt="" class="marquee-logo"><img loading="lazy" src="new_images/partners/cti.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/emm.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/hmg.svg" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/ku.png" alt="" class="marquee-logo small"><img loading="lazy" src="new_images/partners/lisc.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/mac.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/thedrop.png" alt="" class="marquee-logo large"></div>
-            <div class="single-logo-marquee"><img loading="lazy" src="new_images/partners/artskc.png" alt="" class="marquee-logo"><img loading="lazy" src="new_images/partners/cti.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/emm.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/hmg.svg" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/ku.png" alt="" class="marquee-logo small"><img loading="lazy" src="new_images/partners/lisc.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/mac.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/thedrop.png" alt="" class="marquee-logo large"></div>
+          <div class="wrap-marquee-logos">
+            <div class="single-logo-marquee"><img loading="lazy" src="new_images/partners/artskc.png" alt="" class="marquee-logo"><img loading="lazy" src="new_images/partners/cti.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/emm.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/hmg.svg" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/ku.png" alt="" class="marquee-logo small"><img loading="lazy" src="new_images/partners/lisc.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/mac.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/thedrop.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/young-women-on-the-move.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/gkcrhp.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/masn.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/charlotte-street.png" alt="" class="marquee-logo"><img loading="lazy" src="new_images/partners/hall-family-foundation.png" alt="" class="marquee-logo large"></div>
+            <div class="single-logo-marquee" aria-hidden="true"><img loading="lazy" src="new_images/partners/artskc.png" alt="" class="marquee-logo"><img loading="lazy" src="new_images/partners/cti.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/emm.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/hmg.svg" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/ku.png" alt="" class="marquee-logo small"><img loading="lazy" src="new_images/partners/lisc.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/mac.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/thedrop.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/young-women-on-the-move.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/gkcrhp.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/masn.png" alt="" class="marquee-logo large"><img loading="lazy" src="new_images/partners/charlotte-street.png" alt="" class="marquee-logo"><img loading="lazy" src="new_images/partners/hall-family-foundation.png" alt="" class="marquee-logo large"></div>
           </div>
           <div class="logo-shadow"></div>
           <div class="logo-shadow right"></div>
