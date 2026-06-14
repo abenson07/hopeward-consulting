@@ -5503,7 +5503,7 @@ section.master-footer .heading-cta {
   z-index: 1;
   background-image: linear-gradient(180deg, var(--_🎨-color---neutral--dark-64), var(--_🎨-color---neutral--dark-0));
   width: 100%;
-  height: 30%;
+  height: 50%;
   position: absolute;
   inset: 0% 0% auto;
 }
