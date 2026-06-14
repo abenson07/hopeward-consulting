@@ -69,3 +69,58 @@ body.hopeward-book-modal-open {
 .footer-legal-tile {
   border-top: none;
 }
+
+/* Homepage — hero Home B */
+.hero-home-b-section .headline-home-b {
+  max-width: var(--max-width--8-columns);
+}
+
+.hero-home-b-section .headline-home-b-bottom-tile,
+.hero-home-b-section .text-wrap-home-b-hero {
+  max-width: 100%;
+  width: 100%;
+}
+
+.hero-home-b-section .hero-link-new {
+  padding: 8px 12px;
+}
+
+#templates .expandable-title-stack {
+  display: flex;
+  flex-flow: column;
+  gap: 4px;
+}
+
+/* Homepage — logo marquee (Webflow IX2 fallback) */
+.home-a-logo-section .wrap-marquee-logos {
+  column-gap: 0;
+  grid-column-gap: 0;
+  animation: hopeward-logo-marquee 20s linear infinite;
+  will-change: transform;
+}
+
+.home-a-logo-section .single-logo-marquee {
+  padding-right: var(--spacing--80);
+}
+
+@keyframes hopeward-logo-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Homepage — hero image marquee (Webflow IX2 fallback) */
+.hero-home-b-section .marquee-images {
+  column-gap: 0;
+  grid-column-gap: 0;
+}
+
+.hero-home-b-section .single-marquee-images-100 {
+  padding-right: var(--spacing--16);
+  animation: single-marquee-images-100 60s linear infinite;
+  will-change: transform;
+}
+
+@keyframes single-marquee-images-100 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
