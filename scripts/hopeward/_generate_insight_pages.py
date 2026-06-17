@@ -84,7 +84,7 @@ def related_cards_html(current_slug: str, related_raw: str, by_slug: dict[str, d
         href = html.escape(f"{slug}.html", quote=True)
         lines.append(
             f"""          <div role="listitem" class="w-dyn-item">
-            <a href="{href}" class="card-article w-inline-block">
+            <a href="{href}" class="card-article w-inline-block" data-id="more-insights-card-{slug}">
               <div class="image-wrap-article-card"><img src="{img}" loading="lazy" alt="" class="image-cover parallax"></div>
               <div class="text-wrap-article-card">
                 <div class="eyebrow">
@@ -168,12 +168,12 @@ def render_post(template: str, row: dict, by_slug: dict[str, dict]) -> str:
     hero_block = f"""        <div class="left-article-hero">
           <div data-wf--eyebrow--variant="base" class="eyebrow">
             <div class="eyebrow-circle"></div>
-            <div class="label-small">{date_esc}</div>
+            <div class="label-small" data-id="{slug}-hero-date">{date_esc}</div>
           </div>
-          <h1>{name_esc}</h1>
+          <h1 data-id="{slug}-hero-title">{name_esc}</h1>
         </div>
         <div class="article-image-placeholder">
-          <div data-w-id="267c43ad-7411-0cae-3c26-40a6d3d0b5eb" class="image-wrap-article"><img src="{image_esc}" loading="lazy" alt="{alt_esc}" class="image-cover parallax"></div>
+          <div data-w-id="267c43ad-7411-0cae-3c26-40a6d3d0b5eb" class="image-wrap-article"><img src="{image_esc}" loading="lazy" alt="{alt_esc}" class="image-cover parallax" data-id="{slug}-hero-image"></div>
         </div>"""
 
     out = re.sub(
@@ -192,7 +192,7 @@ def render_post(template: str, row: dict, by_slug: dict[str, dict]) -> str:
 
     body_block = f"""      <div class="master-body-article">
         <div class="article-body-small">
-          <div class="body-article w-richtext">{body_html}</div>
+          <div class="body-article w-richtext" data-id="{slug}-article-body">{body_html}</div>
         </div>
       </div>"""
 
@@ -231,6 +231,15 @@ def main() -> None:
     import runpy
 
     runpy.run_path(str(ROOT / "scripts" / "hopeward" / "_patch_insights_nav.py"), run_name="__main__")
+    print("Injecting annotation IDs on insight pages …")
+    import subprocess
+
+    insight_paths = [f"insights/{p.name}" for p in sorted(INSIGHTS.glob("*.html"))]
+    subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "hopeward" / "_inject_annotation_ids.py"), *insight_paths],
+        check=True,
+        cwd=ROOT,
+    )
 
 
 if __name__ == "__main__":
