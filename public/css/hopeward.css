@@ -131,6 +131,50 @@ body.hopeward-book-modal-open {
   display: none;
 }
 
+/* Navigation — mobile menu icon swap (Webflow IX2 fallback) */
+@media screen and (max-width: 991px) {
+  .menu-button.w--open .menu-button-inner.open {
+    display: none;
+  }
+
+  .menu-button.w--open .menu-button-inner.close {
+    display: flex;
+  }
+}
+
+/* Navigation mega-dropdowns — fade + slide animation (Webflow IX2 fallback).
+   Override Webflow's instant display:none/block swap so the panels can
+   transition. Kept rendered but inert (visibility/pointer-events) when closed. */
+.master-navigation .dropdown-list {
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+    visibility 0.3s;
+}
+
+.master-navigation .dropdown-list.w--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Dropdown link/card hover lift inside the mega panels */
+.master-navigation .nav-column-item,
+.master-navigation .nav-card {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.master-navigation .nav-column-item:hover {
+  opacity: 0.72;
+}
+
 /* Homepage — logo marquee (Webflow IX2 fallback) */
 .home-a-logo-section .wrap-marquee-logos {
   column-gap: 0;
