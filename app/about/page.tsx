@@ -1,21 +1,28 @@
-import { SiteHeader } from "@/components/site-header";
-import { AboutHeroSection } from "@/components/about-hero-section";
-import { SystemStatsSection } from "@/components/system-stats-section";
-import { FeatureShowcaseSection } from "@/components/feature-showcase-section";
-import { TeamSection } from "@/components/team-section";
-import { SiteFooter } from "@/components/site-footer";
+import { ContactPrefooter } from "@/components/contact-prefooter";
+import { EmpoweringMission } from "@/components/empowering-mission";
+import { HopeIntroBlock } from "@/components/hope-intro-block";
+import { HopewardNavigation } from "@/components/hopeward-navigation";
+import { PartnersMarquee } from "@/components/partners-marquee";
+import { PortedHomeHero } from "@/components/ported-home-hero";
+import { TeamBlock } from "@/components/team-block";
+import { ValuesSection } from "@/components/values-section";
+
+import { HopewardFooter } from "@/components/hopeward-footer";
 
 export default function AboutPage() {
   return (
     <>
-      <SiteHeader />
+      <HopewardNavigation />
       <main className="flex flex-1 flex-col">
-        <AboutHeroSection />
-        <SystemStatsSection />
-        <FeatureShowcaseSection />
-        <TeamSection />
+        <PortedHomeHero />
+        <ValuesSection />
+        <EmpoweringMission />
+        <PartnersMarquee />
+        <HopeIntroBlock />
+        <TeamBlock />
+        <ContactPrefooter />
       </main>
-      <SiteFooter />
+      <HopewardFooter />
     </>
   );
 }
