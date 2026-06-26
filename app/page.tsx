@@ -1,26 +1,27 @@
-import { SiteHeader } from "@/components/site-header";
-import { HeroSection } from "@/components/hero-section";
-import { ValueFeaturesSection } from "@/components/value-features-section";
-import { ExpandableCardsSection } from "@/components/expandable-cards-section";
-import { TestimonialSection } from "@/components/testimonial-section";
-import { SellingPointsSection } from "@/components/selling-points-section";
-import { CaseStudyFeatureSection } from "@/components/case-study-feature-section";
-import { SiteFooter } from "@/components/site-footer";
+import { CaseStudiesSlider } from "@/components/case-studies-slider";
+import { HomeIntro } from "@/components/home-intro";
+import { HopewardFooter } from "@/components/hopeward-footer";
+import { HopewardNavigation } from "@/components/hopeward-navigation";
+import { OrgCollabSection } from "@/components/org-collab-section";
+import { PartnersMarquee } from "@/components/partners-marquee";
+import { PortedHomeHero } from "@/components/ported-home-hero";
+import { ServicesTabSection } from "@/components/services-tab-section";
+import { TestimonialSingle } from "@/components/testimonial-single";
 
 export default function Home() {
   return (
     <>
-      <SiteHeader />
+      <HopewardNavigation />
       <main className="flex flex-1 flex-col">
-        <HeroSection />
-        <ValueFeaturesSection />
-        {/* TODO: add centered intro text above this section */}
-        <ExpandableCardsSection />
-        <TestimonialSection />
-        <SellingPointsSection />
-        <CaseStudyFeatureSection />
+        <PortedHomeHero />
+        <HomeIntro />
+        <OrgCollabSection />
+        <PartnersMarquee />
+        <TestimonialSingle />
+        <ServicesTabSection />
+        <CaseStudiesSlider />
       </main>
-      <SiteFooter />
+      <HopewardFooter />
     </>
   );
 }

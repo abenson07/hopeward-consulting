@@ -1,4 +1,7 @@
-import { COMPONENT_REGISTRY } from "@/lib/component-registry";
+import {
+  BUSTED_COMPONENT_REGISTRY,
+  PORTED_COMPONENT_REGISTRY,
+} from "@/lib/component-registry";
 import { ComponentViewer } from "./component-viewer";
 
 export const metadata = {
@@ -6,11 +9,16 @@ export const metadata = {
 };
 
 export default function ViewerPage() {
-  const items = COMPONENT_REGISTRY.map(({ slug, name, file }) => ({
+  const ported = PORTED_COMPONENT_REGISTRY.map(({ slug, name, file }) => ({
+    slug,
+    name,
+    file,
+  }));
+  const busted = BUSTED_COMPONENT_REGISTRY.map(({ slug, name, file }) => ({
     slug,
     name,
     file,
   }));
 
-  return <ComponentViewer items={items} />;
+  return <ComponentViewer ported={ported} busted={busted} />;
 }

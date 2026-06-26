@@ -1,15 +1,20 @@
-import { SiteHeader } from "@/components/site-header";
-import { ContactFormSection } from "@/components/contact-form-section";
-import { SiteFooter } from "@/components/site-footer";
+import { CenterContact } from "@/components/center-contact";
+import { FaqSection } from "@/components/faq-section";
+import { HopewardNavigation } from "@/components/hopeward-navigation";
+import { VideoBlock } from "@/components/video-block";
+
+import { HopewardFooter } from "@/components/hopeward-footer";
 
 export default function ContactPage() {
   return (
     <>
-      <SiteHeader />
+      <HopewardNavigation />
       <main className="flex flex-1 flex-col">
-        <ContactFormSection />
+        <CenterContact />
+        <VideoBlock />
+        <FaqSection />
       </main>
-      <SiteFooter />
+      <HopewardFooter />
     </>
   );
 }

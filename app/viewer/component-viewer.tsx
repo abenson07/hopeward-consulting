@@ -10,13 +10,6 @@ type ViewerItem = {
   file: string;
 };
 
-function getImportStatement(item: ViewerItem) {
-  const importPath = item.file
-    .replace(/^components\//, "@/components/")
-    .replace(/\.tsx$/, "");
-  return `import { ${item.name} } from "${importPath}";`;
-}
-
 function GridCard({
   item,
   isCopied,
@@ -128,11 +121,54 @@ function GridCard({
   );
 }
 
-export function ComponentViewer({ items }: { items: ViewerItem[] }) {
+function SectionGrid({
+  title,
+  description,
+  items,
+  copiedSlug,
+  onCopy,
+}: {
+  title: string;
+  description: string;
+  items: ViewerItem[];
+  copiedSlug: string | null;
+  onCopy: (item: ViewerItem) => void;
+}) {
+  if (items.length === 0) return null;
+
+  return (
+    <section className="mb-10">
+      <div className="mb-4">
+        <h2 className="text-xs font-semibold tracking-wide text-neutral-900 uppercase">
+          {title}
+        </h2>
+        <p className="mt-0.5 text-xs text-neutral-500">{description}</p>
+      </div>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        {items.map((item) => (
+          <GridCard
+            key={item.slug}
+            item={item}
+            isCopied={item.slug === copiedSlug}
+            onCopy={onCopy}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function ComponentViewer({
+  ported,
+  busted,
+}: {
+  ported: ViewerItem[];
+  busted: ViewerItem[];
+}) {
   const [copiedSlug, setCopiedSlug] = React.useState<string | null>(null);
   const copyResetRef = React.useRef<number | null>(null);
 
-  const copyImport = React.useCallback((item: ViewerItem) => {
+  const copyName = React.useCallback((item: ViewerItem) => {
     const done = () => {
       setCopiedSlug(item.slug);
       if (copyResetRef.current) window.clearTimeout(copyResetRef.current);
@@ -140,7 +176,7 @@ export function ComponentViewer({ items }: { items: ViewerItem[] }) {
     };
     if (navigator.clipboard?.writeText) {
       navigator.clipboard
-        .writeText(getImportStatement(item))
+        .writeText(item.name)
         .then(done)
         .catch(done);
     } else {
@@ -155,26 +191,32 @@ export function ComponentViewer({ items }: { items: ViewerItem[] }) {
     [],
   );
 
+
   return (
     <div className="min-h-screen w-full bg-neutral-100 text-neutral-900">
       <header className="sticky top-0 z-10 border-b border-neutral-200 bg-white/85 px-6 py-4 backdrop-blur">
         <h1 className="text-sm font-semibold tracking-tight">Components</h1>
         <p className="mt-0.5 text-xs text-neutral-500">
-          {items.length} sections · click a card to copy import
+          {ported.length} ported · {busted.length} archived · click a card to
+          copy name
         </p>
       </header>
 
       <main className="px-6 py-6">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-          {items.map((item) => (
-            <GridCard
-              key={item.slug}
-              item={item}
-              isCopied={item.slug === copiedSlug}
-              onCopy={copyImport}
-            />
-          ))}
-        </div>
+        <SectionGrid
+          title="Ported"
+          description="Faithful HTML/CSS ports in components/"
+          items={ported}
+          copiedSlug={copiedSlug}
+          onCopy={copyName}
+        />
+        <SectionGrid
+          title="Archived"
+          description="Old Tailwind rewrites in busted-components/"
+          items={busted}
+          copiedSlug={copiedSlug}
+          onCopy={copyName}
+        />
       </main>
     </div>
   );

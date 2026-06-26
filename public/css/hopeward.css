@@ -70,6 +70,37 @@ body.hopeward-book-modal-open {
   border-top: none;
 }
 
+/* Resources page — type filter buttons (source-inline styles) */
+.resources-filters {
+  grid-column-gap: var(--spacing--12);
+  grid-row-gap: var(--spacing--12);
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+.resources-filters .resources-filter {
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.resources-filters .resources-filter.is-active .button-bg {
+  background-color: var(--_🎨-color---accent--everglow);
+  border-color: transparent;
+}
+
+.resources-filters .resources-filter.is-active .button-text {
+  text-shadow: 0 1.5em 0 var(--_🎨-color---neutral--light-100);
+  color: var(--_🎨-color---neutral--light-100);
+}
+
+.hero-cs-section .cs-item[hidden] {
+  display: none;
+}
+
 /* Homepage — hero Home B */
 .hero-home-b-section .headline-home-b {
   max-width: var(--max-width--8-columns);
@@ -89,6 +120,15 @@ body.hopeward-book-modal-open {
   display: flex;
   flex-flow: column;
   gap: 4px;
+}
+
+/* Contact FAQ accordion (Webflow IX2 fallback) */
+.expandable-single:not(.w--open) .expandable-bottom {
+  display: none;
+}
+
+.expandable-single.w--open .faq-vertical {
+  display: none;
 }
 
 /* Homepage — logo marquee (Webflow IX2 fallback) */
@@ -123,4 +163,64 @@ body.hopeward-book-modal-open {
 @keyframes single-marquee-images-100 {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
+}
+
+/*
+ * Service detail pages — rules ported verbatim from the per-page inline
+ * <style> block in hopeward-26/*.html (assessment-planning.html et al.).
+ * These aren't in the Webflow CSS export, so they live here so the ported
+ * service sections style faithfully.
+ */
+.service-about-section .text-h6.service-about-lead-serif {
+  font-family: var(--_🔠-typography---font--heading-serif);
+  font-weight: var(--_🔠-typography---weight--heading-serif);
+}
+
+.headline-column .home-a-column-bullets {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.headline-column .home-a-column-bullets li {
+  margin-bottom: 0.5rem;
+}
+
+.headline-column .home-a-column-bullets li:last-child {
+  margin-bottom: 0;
+}
+
+.service-services-section .w-layout-grid.service-grid {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media screen and (max-width: 991px) {
+  .service-services-section .w-layout-grid.service-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .service-services-section .w-layout-grid.service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+section.section.services-home-c-section {
+  background-color: var(--_🎨-color---neutral--light-100);
+  color: var(--_🎨-color---neutral--dark-100);
+}
+
+section.section.services-home-c-section .service-list {
+  border-top-color: var(--_🎨-color---neutral--dark-16);
+}
+
+section.section.services-home-c-section .service-item {
+  color: var(--_🎨-color---neutral--dark-100);
+  border-bottom-color: var(--_🎨-color---neutral--dark-16);
+}
+
+section.section.services-home-c-section .eyebrow:where(.w-variant-28acc736-5214-c16f-feb0-b6f750193894) {
+  color: var(--_🎨-color---neutral--dark-64);
 }
